@@ -1,26 +1,25 @@
-﻿<Window x:Class="ZeroKnowledgeProofApp.Views.LoginView"
+﻿<Window x:Class="ZeroKnowledgeProofApp.Views.RegisterView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ZeroKnowledgeProofApp.Views"
         xmlns:vm="clr-namespace:ZeroKnowledgeProofApp.ViewModels"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        x:Name="Window"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" 
+        Title="RegisterView" 
         Height="450" 
         Width="500">
     <Window.DataContext>
-        <vm:LoginViewModel/>
+        <vm:RegisterViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50px"/>
             <RowDefinition/>
-            <RowDefinition Height="50px"/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -49,60 +48,51 @@
         </StackPanel>
         <TextBlock 
             Grid.Row="1"
+            VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
             FontSize="40"
-            Text="Авторизация"/>
-        <StackPanel
+            Text="Регистрация"/>
+        <Button 
             Grid.Row="2"
-            Orientation="Horizontal"
             VerticalAlignment="Center"
-            HorizontalAlignment="Right">
-            <TextBlock 
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Foreground="Gray"
-                FontSize="14"
-                Text="Еще не зарегистрированы?"/>
-            <Button 
-                Margin="5 0 5 0"
-                Content="Зарегистрируйтесь"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                Command="{Binding OpenRegisterWindow}"/>
-        </StackPanel>
+            HorizontalAlignment="Right"
+            Margin="0 0 5 0"
+            Content="Авторизация"
+            Style="{StaticResource MaterialDesignFlatButton}"
+            Command="{Binding OpenLoginWindow}"/>
         <TextBox 
             Grid.Row="3"
-            HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             Width="300"
+            materialDesign:HintAssist.Hint="Введите фамилию"
             FontSize="18"
-            materialDesign:HintAssist.Hint="Введите логин"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
             Grid.Row="4"
-            HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             Width="300"
+            materialDesign:HintAssist.Hint="Введите имя"
             FontSize="18"
-            materialDesign:HintAssist.Hint="Введите N"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="{Binding N, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
             Grid.Row="5"
-            HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             Width="300"
+            materialDesign:HintAssist.Hint="Введите логин"
             FontSize="18"
-            materialDesign:HintAssist.Hint="Введите секретный ключ"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="{Binding V, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button
+            Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button 
             Grid.Row="6"
+            Width="200"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Width="200"
-            Content="Авторизироваться"
-            IsEnabled="{Binding IsLoginActive}"/>
+            Content="Зарегистрироваться"
+            IsEnabled="{Binding IsRegisterActive}"/>
     </Grid>
 </Window>

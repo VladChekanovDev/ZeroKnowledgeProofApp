@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ZeroKnowledgeProofApp.Entities;
 
 namespace ZeroKnowledgeProofApp.Other
 {
@@ -16,5 +17,7 @@ namespace ZeroKnowledgeProofApp.Other
                 optionsBuilder.UseSqlite("Data Source=./ZeroKnowledgeProofDB.db");
             }
         }
+
+        public DbSet<User> Users { get; set; }
     }
 }

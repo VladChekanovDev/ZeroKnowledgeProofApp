@@ -7,20 +7,40 @@ using ZeroKnowledgeProofApp.Views;
 
 namespace ZeroKnowledgeProofApp.ViewModels
 {
-    class LoginViewModel: BaseVM
+    class RegisterViewModel: BaseVM
     {
         #region Поля
 
+        string lastName;
+        string firstName;
         string login;
-        string n;
-        string v;
-        DelegateCommand openRegisterWindow;
         DelegateCommand closeWindow;
         DelegateCommand minimizeWindow;
+        DelegateCommand openLoginWindow;
 
         #endregion
 
         #region Свойства
+
+        public string LastName
+        {
+            get => lastName;
+            set
+            {
+                lastName = value;
+                OnPropertyChanged(nameof(IsRegisterActive));
+            }
+        }
+
+        public string FirstName
+        {
+            get => firstName;
+            set
+            {
+                firstName = value;
+                OnPropertyChanged(nameof(IsRegisterActive));
+            }
+        }
 
         public string Login
         {
@@ -28,33 +48,13 @@ namespace ZeroKnowledgeProofApp.ViewModels
             set
             {
                 login = value;
-                OnPropertyChanged(nameof(IsLoginActive));
+                OnPropertyChanged(nameof(IsRegisterActive));
             }
         }
 
-        public string N
-        {
-            get => n;
-            set
-            {
-                n = value;
-                OnPropertyChanged(nameof(IsLoginActive));
-            }
-        }
-
-        public string V
-        {
-            get => v;
-            set
-            {
-                v = value;
-                OnPropertyChanged(nameof(IsLoginActive));
-            }
-        }
-
-        public bool IsLoginActive => !string.IsNullOrWhiteSpace(login)
-            && !string.IsNullOrWhiteSpace(n)
-            && !string.IsNullOrWhiteSpace(v);
+        public bool IsRegisterActive => !string.IsNullOrWhiteSpace(lastName)
+            && !string.IsNullOrWhiteSpace(firstName)
+            && !string.IsNullOrWhiteSpace(login);
 
         #endregion
 
@@ -75,23 +75,23 @@ namespace ZeroKnowledgeProofApp.ViewModels
         {
             get
             {
-                return minimizeWindow ??= new DelegateCommand((arg) =>
+                return minimizeWindow ??= new DelegateCommand((obj) =>
                 {
                     Application.Current.MainWindow.WindowState = WindowState.Minimized;
                 });
             }
         }
 
-        public DelegateCommand OpenRegisterWindow
+        public DelegateCommand OpenLoginWindow
         {
             get
             {
-                return openRegisterWindow ??= new DelegateCommand((obj) =>
+                return openLoginWindow ??= new DelegateCommand((obj) =>
                 {
-                    var registerWindow = new RegisterView();
-                    registerWindow.Show();
+                    var loginWindow = new LoginView();
+                    loginWindow.Show();
                     Application.Current.MainWindow.Close();
-                    Application.Current.MainWindow = registerWindow;
+                    Application.Current.MainWindow = loginWindow;
                 });
             }
         }
