@@ -93,6 +93,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Content="Зарегистрироваться"
-            IsEnabled="{Binding IsRegisterActive}"/>
+            IsEnabled="{Binding IsRegisterActive}"
+            Command="{Binding OpenGenerateKeysDialog}"/>
     </Grid>
 </Window>

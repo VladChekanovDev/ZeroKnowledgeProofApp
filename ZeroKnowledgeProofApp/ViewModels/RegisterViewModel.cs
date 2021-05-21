@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using ZeroKnowledgeProofApp.Dialogs.DialogsViewModels;
+using ZeroKnowledgeProofApp.Dialogs.DialogsViews;
+using ZeroKnowledgeProofApp.Entities;
+using ZeroKnowledgeProofApp.Models;
 using ZeroKnowledgeProofApp.Other;
 using ZeroKnowledgeProofApp.Views;
 
@@ -17,6 +21,7 @@ namespace ZeroKnowledgeProofApp.ViewModels
         DelegateCommand closeWindow;
         DelegateCommand minimizeWindow;
         DelegateCommand openLoginWindow;
+        DelegateCommand openGenerateKeysDialog;
 
         #endregion
 
@@ -92,6 +97,23 @@ namespace ZeroKnowledgeProofApp.ViewModels
                     loginWindow.Show();
                     Application.Current.MainWindow.Close();
                     Application.Current.MainWindow = loginWindow;
+                });
+            }
+        }
+
+        public DelegateCommand OpenGenerateKeysDialog
+        {
+            get
+            {
+                return openGenerateKeysDialog ??= new DelegateCommand((obj) =>
+                {
+                    var dialog = new GenerateKeysView();
+                    if (dialog.ShowDialog() == true)
+                    {
+                        var vm = (GenerateKeysViewModel)dialog.DataContext;
+                        var newuser = new User(firstName, lastName, login, vm.N, vm.V0);
+                        new UserModel().Add(newuser);
+                    }
                 });
             }
         }

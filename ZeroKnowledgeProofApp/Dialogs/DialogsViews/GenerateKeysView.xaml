@@ -1,0 +1,79 @@
+﻿<Window x:Class="ZeroKnowledgeProofApp.Dialogs.DialogsViews.GenerateKeysView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZeroKnowledgeProofApp.Dialogs.DialogsViews"
+        xmlns:vm="clr-namespace:ZeroKnowledgeProofApp.Dialogs.DialogsViewModels"
+        mc:Ignorable="d"
+        x:Name="Window"
+        Title="GenerateKeysView"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        SizeToContent="WidthAndHeight">
+    <Window.DataContext>
+        <vm:GenerateKeysViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            Margin="15 15 15 15"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="40"
+            Text="Ваши данные"/>
+        <TextBlock 
+            Grid.Row="1"
+            Margin="5 5 0 0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontSize="18"
+            Text="{Binding StringFormat=P: {0}, Path=P}"/>
+        <TextBlock 
+            Grid.Row="2"
+            Margin="5 5 0 0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontSize="18"
+            Text="{Binding StringFormat=Q: {0}, Path=Q}"/>
+        <TextBlock 
+            Grid.Row="3"
+            Margin="5 5 0 0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontSize="18"
+            Text="{Binding StringFormat=N: {0}, Path=N}"/>
+        <TextBlock 
+            Grid.Row="4"
+            Margin="5 5 0 0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontSize="18"
+            Text="{Binding StringFormat=Открытый ключ: {0}, Path=V0}"/>
+        <TextBlock 
+            Grid.Row="5"
+            Margin="5 0 0 0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontSize="18"
+            FontWeight="Bold"
+            Text="{Binding StringFormat=Секретный ключ: {0}, Path=S}"/>
+        <Button 
+            Grid.Row="6"
+            Margin="15 15 15 15"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Content="Хорошо"
+            Command="{Binding Register}"
+            CommandParameter="{Binding ElementName=Window}"/>
+    </Grid>
+</Window>
