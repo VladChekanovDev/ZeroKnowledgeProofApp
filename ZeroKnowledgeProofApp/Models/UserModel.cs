@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using ZeroKnowledgeProofApp.Entities;
 using ZeroKnowledgeProofApp.Other;
@@ -14,6 +15,14 @@ namespace ZeroKnowledgeProofApp.Models
             {
                 db.Users.Add(user);
                 db.SaveChanges();
+            }
+        }
+
+        public bool IsUserExists(string login)
+        {
+            using (var db = new ZeroKnowledgeProofDbContext())
+            {
+                return db.Users.FirstOrDefault(u => u.Login == login) != null;
             }
         }
     }

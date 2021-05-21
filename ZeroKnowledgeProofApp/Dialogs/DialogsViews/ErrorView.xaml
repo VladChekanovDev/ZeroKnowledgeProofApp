@@ -1,0 +1,35 @@
+﻿<Window x:Class="ZeroKnowledgeProofApp.Dialogs.DialogsViews.ErrorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZeroKnowledgeProofApp.Dialogs.DialogsViews"
+        xmlns:vm="clr-namespace:ZeroKnowledgeProofApp.Dialogs.DialogsViewModels"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        SizeToContent="WidthAndHeight"
+        Title="ErrorView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            x:Name="ErrorTextBlock"
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="15px"
+            FontSize="40"
+            Text="Сообщение"/>
+        <Button 
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="15px"
+            Content="Хорошо"
+            IsCancel="True"
+            Style="{StaticResource MaterialDesignFlatButton}"/>
+    </Grid>
+</Window>

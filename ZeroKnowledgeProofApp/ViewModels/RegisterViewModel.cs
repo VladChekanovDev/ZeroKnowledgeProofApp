@@ -107,12 +107,20 @@ namespace ZeroKnowledgeProofApp.ViewModels
             {
                 return openGenerateKeysDialog ??= new DelegateCommand((obj) =>
                 {
-                    var dialog = new GenerateKeysView();
-                    if (dialog.ShowDialog() == true)
+                    if (new UserModel().IsUserExists(login))
                     {
-                        var vm = (GenerateKeysViewModel)dialog.DataContext;
-                        var newuser = new User(firstName, lastName, login, vm.N, vm.V0);
-                        new UserModel().Add(newuser);
+                        var error = new ErrorView("Пользователь с таким логином уже существует");
+                        error.ShowDialog();
+                    }
+                    else
+                    {
+                        var dialog = new GenerateKeysView();
+                        if (dialog.ShowDialog() == true)
+                        {
+                            var vm = (GenerateKeysViewModel)dialog.DataContext;
+                            var newuser = new User(firstName, lastName, login, vm.N.ToString(), vm.V0.ToString());
+                            new UserModel().Add(newuser);
+                        }
                     }
                 });
             }
