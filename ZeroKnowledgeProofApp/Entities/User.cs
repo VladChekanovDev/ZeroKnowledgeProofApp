@@ -13,19 +13,21 @@ namespace ZeroKnowledgeProofApp.Entities
         public string Login { get; set; }
         public string N { get; set; }
         public string V0 { get; set; }
+        public string S { get; set; }
 
         public User()
         {
 
         }
 
-        public User(string firstName, string lastName, string login, string n, string v0)
+        public User(string firstName, string lastName, string login, string n, string v0, string s)
         {
             FirstName = firstName;
             LastName = lastName;
             Login = login;
             N = n;
             V0 = v0;
+            S = s;
         }
     }
 }

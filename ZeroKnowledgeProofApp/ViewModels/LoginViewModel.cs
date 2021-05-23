@@ -109,9 +109,15 @@ namespace ZeroKnowledgeProofApp.ViewModels
                         else
                         {
                             var authenticateView = new AuthenticationView();
+                            CurrentUserInfo.IsAuthenticated = true;
                             if (authenticateView.ShowDialog() == true)
                             {
-
+                                if (CurrentUserInfo.IsAuthenticated)
+                                {
+                                    new ErrorView("Пользователь прошел проверку").ShowDialog();
+                                }
+                                else
+                                    new ErrorView("Пользователь не авторизован").ShowDialog();
                             }
                         }
                     }

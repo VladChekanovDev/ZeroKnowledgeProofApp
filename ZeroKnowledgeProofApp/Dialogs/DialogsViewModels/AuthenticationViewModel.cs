@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using ZeroKnowledgeProofApp.Dialogs.DialogsViews;
 using ZeroKnowledgeProofApp.Other;
@@ -61,10 +62,18 @@ namespace ZeroKnowledgeProofApp.Dialogs.DialogsViewModels
         {
             get
             {
-                return generateNewIteration ??= new DelegateCommand((obj) =>
+                return generateNewIteration ??= new DelegateCommand((arg) =>
                 {
-                    Iteration++;
-                    IterationControl = new IterationControlView();
+                    if (iteration != 7)
+                    {
+                        Iteration++;
+                        IterationControl = new IterationControlView();
+                    }
+                    else
+                    {
+                        var window = (Window)arg;
+                        window.DialogResult = true;
+                    }
                 });
             }
         }

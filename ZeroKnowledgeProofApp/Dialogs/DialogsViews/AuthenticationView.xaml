@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ZeroKnowledgeProofApp.Dialogs.DialogsViews"
         xmlns:vm="clr-namespace:ZeroKnowledgeProofApp.Dialogs.DialogsViewModels"
         mc:Ignorable="d"
+        x:Name="Window"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Title="AuthenticationDialog" 
@@ -35,6 +36,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Content="{Binding ButtonText}"
-            Command="{Binding GenerateNewIteration}"/>
+            Command="{Binding GenerateNewIteration}"
+            CommandParameter="{Binding ElementName=Window}"/>
     </Grid>
 </Window>

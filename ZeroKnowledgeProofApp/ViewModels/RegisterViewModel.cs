@@ -118,7 +118,7 @@ namespace ZeroKnowledgeProofApp.ViewModels
                         if (dialog.ShowDialog() == true)
                         {
                             var vm = (GenerateKeysViewModel)dialog.DataContext;
-                            var newuser = new User(firstName, lastName, login, vm.N.ToString(), vm.V0.ToString());
+                            var newuser = new User(firstName, lastName, login, vm.N.ToString(), vm.V0.ToString(), vm.S.ToString());
                             new UserModel().Add(newuser);
                         }
                     }

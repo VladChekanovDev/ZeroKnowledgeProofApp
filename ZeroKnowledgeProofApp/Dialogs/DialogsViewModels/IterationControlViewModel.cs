@@ -95,11 +95,12 @@ namespace ZeroKnowledgeProofApp.Dialogs.DialogsViewModels
                     else
                     {
                         result = false;
+                        CurrentUserInfo.IsAuthenticated = false;
                         return "Результат : не прошел";
                     }
                 }
                 else if (b == 1)
-                    if (x == y * y * v % n)
+                    if (BigInteger.Parse(CurrentUserInfo.CurrentUser.S) == CurrentUserInfo.S)
                     {
                         result = true;
                         return "Результат : прошел";
@@ -107,6 +108,7 @@ namespace ZeroKnowledgeProofApp.Dialogs.DialogsViewModels
                     else
                     {
                         result = false;
+                        CurrentUserInfo.IsAuthenticated = false;
                         return "Результат : не прошел";
                     }
                 else

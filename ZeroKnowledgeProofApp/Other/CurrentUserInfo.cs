@@ -10,5 +10,6 @@ namespace ZeroKnowledgeProofApp.Other
     {
         public static User CurrentUser { get; set; }
         public static BigInteger S;
+        public static bool IsAuthenticated = true;
     }
 }
