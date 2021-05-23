@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Numerics;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace ZeroKnowledgeProofApp.ViewModels
         DelegateCommand closeWindow;
         DelegateCommand minimizeWindow;
         DelegateCommand authenticateUser;
+        DelegateCommand openHelp;
 
         #endregion
 
@@ -121,6 +123,22 @@ namespace ZeroKnowledgeProofApp.ViewModels
                             }
                         }
                     }
+                });
+            }
+        }
+
+        public DelegateCommand OpenHelp
+        {
+            get
+            {
+                return openHelp ??= new DelegateCommand((obj) =>
+                {
+                    var p = new Process();
+                    p.StartInfo = new ProcessStartInfo($@"{Environment.CurrentDirectory}\help.chm")
+                    {
+                        UseShellExecute = true
+                    };
+                    p.Start();
                 });
             }
         }

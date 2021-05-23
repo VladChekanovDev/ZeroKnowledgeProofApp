@@ -25,6 +25,13 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Button 
+            Grid.Row="0"
+            Margin="5 0 0 0"
+            HorizontalAlignment="Left"
+            Content="Справка"
+            Style="{StaticResource MaterialDesignFlatButton}"
+            Command="{Binding OpenHelp}"/>
         <StackPanel
             Orientation="Horizontal"
             VerticalAlignment="Top"
