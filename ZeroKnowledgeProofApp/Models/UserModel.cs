@@ -25,5 +25,13 @@ namespace ZeroKnowledgeProofApp.Models
                 return db.Users.FirstOrDefault(u => u.Login == login) != null;
             }
         }
+
+        public User FindUser(string login)
+        {
+            using (var db = new ZeroKnowledgeProofDbContext())
+            {
+                return db.Users.FirstOrDefault(u => u.Login == login);
+            }
+        }
     }
 }

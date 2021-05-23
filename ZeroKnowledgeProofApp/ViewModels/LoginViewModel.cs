@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using System.Windows;
+using ZeroKnowledgeProofApp.Dialogs.DialogsViews;
+using ZeroKnowledgeProofApp.Models;
 using ZeroKnowledgeProofApp.Other;
 using ZeroKnowledgeProofApp.Views;
 
@@ -12,11 +15,11 @@ namespace ZeroKnowledgeProofApp.ViewModels
         #region Поля
 
         string login;
-        string n;
-        string v;
+        string s;
         DelegateCommand openRegisterWindow;
         DelegateCommand closeWindow;
         DelegateCommand minimizeWindow;
+        DelegateCommand authenticateUser;
 
         #endregion
 
@@ -32,29 +35,18 @@ namespace ZeroKnowledgeProofApp.ViewModels
             }
         }
 
-        public string N
+        public string S
         {
-            get => n;
+            get => s;
             set
             {
-                n = value;
-                OnPropertyChanged(nameof(IsLoginActive));
-            }
-        }
-
-        public string V
-        {
-            get => v;
-            set
-            {
-                v = value;
+                s = value;
                 OnPropertyChanged(nameof(IsLoginActive));
             }
         }
 
         public bool IsLoginActive => !string.IsNullOrWhiteSpace(login)
-            && !string.IsNullOrWhiteSpace(n)
-            && !string.IsNullOrWhiteSpace(v);
+            && !string.IsNullOrWhiteSpace(s);
 
         #endregion
 
@@ -92,6 +84,37 @@ namespace ZeroKnowledgeProofApp.ViewModels
                     registerWindow.Show();
                     Application.Current.MainWindow.Close();
                     Application.Current.MainWindow = registerWindow;
+                });
+            }
+        }
+
+        public DelegateCommand AuthenticateUser
+        {
+            get
+            {
+                return authenticateUser ??= new DelegateCommand((obj) =>
+                {
+                    var userModel = new UserModel();
+                    if (!(userModel.IsUserExists(login)))
+                    {
+                        new ErrorView("Пользователь не найден. Попробуйте другой логин").ShowDialog();
+                    }
+                    else
+                    {
+                        CurrentUserInfo.CurrentUser = userModel.FindUser(login);
+                        if (!BigInteger.TryParse(s,out CurrentUserInfo.S))
+                        {
+                            new ErrorView("Недопустимое значение ключа, попробуйте снова").ShowDialog();
+                        }
+                        else
+                        {
+                            var authenticateView = new AuthenticationView();
+                            if (authenticateView.ShowDialog() == true)
+                            {
+
+                            }
+                        }
+                    }
                 });
             }
         }

@@ -16,14 +16,14 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="70"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition Height="105"/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="105"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -34,16 +34,23 @@
             HorizontalAlignment="Center"
             FontSize="40"
             Text="Ваши данные"/>
-        <StackPanel
+        <Border
             Grid.Row="1"
-            Margin="5">
-            <TextBlock
-                FontSize="18"
-                Text="Прежде всего, выбирают случайное значение модуля n,"/>
-            <TextBlock 
-                FontSize="18"
-                Text="который является произведением двух больших простых чисел."/>
-        </StackPanel>
+            Margin="5"
+            BorderBrush="Gray"
+            BorderThickness="1px"
+            CornerRadius="5">
+            <StackPanel
+                Margin="5"
+                VerticalAlignment="Center">
+                <TextBlock
+                    FontSize="18"
+                    Text="Прежде всего, выбирают случайное значение модуля n,"/>
+                <TextBlock 
+                    FontSize="18"
+                    Text="который является произведением двух больших простых чисел."/>
+            </StackPanel>
+        </Border>
         <TextBlock 
             Grid.Row="2"
             Margin="5 5 0 0"
@@ -68,19 +75,27 @@
             FontSize="18"
             FontWeight="Bold"
             Text="{Binding StringFormat=Модуль N: {0}, Path=N}"/>
-        <StackPanel
+        <Border
             Grid.Row="5"
-            Margin="5">
-            <TextBlock
-                FontSize="18"
-                Text="Для того чтобы сгенерировать открытый и секретный ключи для"/>
-            <TextBlock 
-                FontSize="18"  
-                Text="стороны А, доверенный арбитр (Центр) выбирает некоторое число V,"/>
-            <TextBlock 
-                FontSize="18"
-                Text="которое является квадра­тичным вычетом по модулю n."/>
-        </StackPanel>
+            Margin="5"
+            BorderBrush="Gray"
+            BorderThickness="1px"
+            CornerRadius="5">
+            <StackPanel
+                Grid.Row="5"
+                Margin="5"
+                VerticalAlignment="Center">
+                <TextBlock
+                    FontSize="18"
+                    Text="Для того чтобы сгенерировать открытый и секретный ключи для"/>
+                <TextBlock 
+                    FontSize="18"  
+                    Text="стороны А, доверенный арбитр (Центр) выбирает некоторое число V,"/>
+                <TextBlock 
+                    FontSize="18"
+                    Text="которое является квадра­тичным вычетом по модулю n."/>
+            </StackPanel>
+        </Border>
         <TextBlock 
             Grid.Row="6"
             Margin="5 5 0 0"
@@ -89,19 +104,27 @@
             FontSize="18"
             FontWeight="Bold"
             Text="{Binding StringFormat=Открытый ключ: {0}, Path=V0}"/>
-        <StackPanel
+        <Border
             Grid.Row="7"
-            Margin="5">
-            <TextBlock
-                FontSize="18"
-                Text="Выбранное значение V является открытым ключом для А."/>
-            <TextBlock 
-                FontSize="18"
-                Text="Затем вычисляют наименьшее значение S."/>
-            <TextBlock 
-                FontSize="18"
-                Text="Это значение S является секретным ключом для А."/>
-        </StackPanel>
+            Margin="5"
+            BorderBrush="Gray"
+            BorderThickness="1px"
+            CornerRadius="5">
+            <StackPanel
+                Grid.Row="7"
+                Margin="5"
+                VerticalAlignment="Center">
+                <TextBlock
+                    FontSize="18"
+                    Text="Выбранное значение V является открытым ключом для А."/>
+                <TextBlock 
+                    FontSize="18"
+                    Text="Затем вычисляют наименьшее значение S."/>
+                <TextBlock 
+                    FontSize="18"
+                    Text="Это значение S является секретным ключом для А."/>
+            </StackPanel>
+        </Border>
         <TextBlock 
             Grid.Row="8"
             Margin="5 0 0 0"

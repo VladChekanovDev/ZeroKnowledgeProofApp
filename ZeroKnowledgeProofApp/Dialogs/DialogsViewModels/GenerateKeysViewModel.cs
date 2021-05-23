@@ -122,7 +122,7 @@ namespace ZeroKnowledgeProofApp.Dialogs.DialogsViewModels
 
         #region Решето Эратосфена
 
-        public static int maxEratosthenes = 21000;
+        public static int maxEratosthenes = 1000;
         public static List<BigInteger> SieveEratosthenes(int n)
         {
 
